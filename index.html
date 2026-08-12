@@ -1,0 +1,1621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>KAASSS — 6 Dudes, 1 Brain Cell</title>
+
+<style>
+
+/* ================================
+   RESET
+================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #050505;
+    color: #f5f5f5;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* ================================
+   NAVBAR
+================================ */
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 72px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 6%;
+
+    background: rgba(5,5,5,0.88);
+    backdrop-filter: blur(14px);
+
+    border-bottom: 1px solid #1b1b1b;
+
+    z-index: 1000;
+}
+
+.nav-logo {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+}
+
+.nav-links {
+    display: flex;
+    gap: 32px;
+}
+
+.nav-links a {
+    color: #999;
+    text-decoration: none;
+
+    font-size: 11px;
+    font-weight: bold;
+
+    letter-spacing: 2px;
+
+    transition: 0.25s;
+}
+
+.nav-links a:hover {
+    color: #2587ff;
+}
+
+
+/* ================================
+   HERO
+================================ */
+
+.hero {
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 130px 8% 80px;
+
+    gap: 60px;
+
+    background:
+        radial-gradient(
+            circle at 75% 45%,
+            rgba(37,135,255,0.10),
+            transparent 32%
+        );
+}
+
+.hero-content {
+    max-width: 720px;
+}
+
+.hero-small {
+    color: #2587ff;
+
+    font-size: 11px;
+    font-weight: bold;
+
+    letter-spacing: 5px;
+
+    margin-bottom: 24px;
+}
+
+.hero h1 {
+    font-size: clamp(60px, 9vw, 125px);
+
+    line-height: 0.86;
+
+    letter-spacing: -7px;
+}
+
+.hero h1 span {
+    color: #2587ff;
+}
+
+.hero-description {
+    color: #858585;
+
+    max-width: 590px;
+
+    font-size: 16px;
+
+    line-height: 1.7;
+
+    margin-top: 32px;
+}
+
+.hero-buttons {
+    display: flex;
+
+    gap: 14px;
+
+    margin-top: 32px;
+}
+
+.button {
+    padding: 14px 21px;
+
+    border-radius: 5px;
+
+    text-decoration: none;
+
+    font-size: 11px;
+    font-weight: bold;
+
+    letter-spacing: 1px;
+
+    transition: 0.25s;
+}
+
+.primary {
+    background: #2587ff;
+    color: white;
+}
+
+.primary:hover {
+    transform: translateY(-3px);
+}
+
+.secondary {
+    border: 1px solid #292929;
+    color: white;
+}
+
+.secondary:hover {
+    border-color: #2587ff;
+}
+
+
+/* HERO LOGO */
+
+.hero-logo {
+    width: min(380px, 34vw);
+
+    object-fit: contain;
+
+    filter:
+        drop-shadow(
+            0 0 35px
+            rgba(37,135,255,0.12)
+        );
+
+    animation: floatLogo 4s ease-in-out infinite;
+}
+
+@keyframes floatLogo {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+}
+
+
+/* ================================
+   GENERAL SECTIONS
+================================ */
+
+section:not(.hero) {
+    padding: 110px 8%;
+}
+
+.section-label {
+    color: #2587ff;
+
+    font-size: 10px;
+    font-weight: bold;
+
+    letter-spacing: 4px;
+
+    margin-bottom: 15px;
+}
+
+.section-title {
+    font-size: clamp(40px, 5vw, 65px);
+
+    letter-spacing: -3px;
+
+    margin-bottom: 55px;
+}
+
+
+/* ================================
+   MEMBERS
+================================ */
+
+.members {
+    background: #080808;
+}
+
+.members-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 22px;
+}
+
+
+/* CARD */
+
+.member-card {
+    background: #0d0d0d;
+
+    border: 1px solid #1b1b1b;
+
+    border-radius: 14px;
+
+    overflow: hidden;
+
+    transition: 0.3s;
+}
+
+.member-card:hover {
+    transform: translateY(-7px);
+
+    border-color:
+        rgba(37,135,255,0.45);
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,0.45);
+}
+
+
+/* ================================
+   PHOTOS
+================================ */
+
+.photo-wrapper {
+    position: relative;
+
+    width: 100%;
+    height: 370px;
+
+    overflow: hidden;
+
+    background: #111;
+}
+
+.photo-wrapper img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition: transform 0.4s;
+}
+
+.member-card:hover .photo-wrapper img {
+    transform: scale(1.035);
+}
+
+
+/* ================================
+   PHOTO ARROWS
+================================ */
+
+.photo-arrow {
+    position: absolute;
+
+    top: 50%;
+
+    transform:
+        translateY(-50%);
+
+    width: 40px;
+    height: 40px;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(255,255,255,0.25);
+
+    background: rgba(0,0,0,0.7);
+
+    color: white;
+
+    font-size: 23px;
+
+    cursor: pointer;
+
+    z-index: 5;
+
+    transition: 0.2s;
+}
+
+.photo-arrow:hover {
+    background: #2587ff;
+    border-color: #2587ff;
+}
+
+.prev {
+    left: 12px;
+}
+
+.next {
+    right: 12px;
+}
+
+
+/* ================================
+   MEMBER INFO
+================================ */
+
+.member-info {
+    padding: 25px;
+}
+
+.member-letter {
+    color: #2587ff;
+
+    font-size: 10px;
+    font-weight: bold;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 8px;
+}
+
+.member-name {
+    font-size: 27px;
+
+    letter-spacing: -1px;
+
+    margin-bottom: 6px;
+}
+
+.member-title {
+    color: #858585;
+
+    font-size: 13px;
+
+    margin-bottom: 20px;
+}
+
+
+/* ================================
+   SKILL TAGS
+================================ */
+
+.skills {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 7px;
+}
+
+.skill {
+    border: 1px solid rgba(37,135,255,0.28);
+
+    color: #8dbbff;
+
+    padding: 7px 10px;
+
+    border-radius: 4px;
+
+    font-size: 9px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+}
+
+
+/* ================================
+   SKILLS SECTION
+================================ */
+
+.skills-section {
+    background: #050505;
+}
+
+.skill-list {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 15px;
+}
+
+.skill-box {
+    padding: 28px;
+
+    background: #0b0b0b;
+
+    border: 1px solid #1b1b1b;
+
+    border-radius: 11px;
+
+    transition: 0.25s;
+}
+
+.skill-box:hover {
+    border-color: #2587ff;
+
+    transform: translateY(-4px);
+}
+
+.skill-box h3 {
+    margin-bottom: 8px;
+
+    font-size: 18px;
+}
+
+.skill-box p {
+    color: #777;
+
+    font-size: 12px;
+}
+
+
+/* ================================
+   LORE
+================================ */
+
+.lore {
+    background: #080808;
+}
+
+.lore-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 18px;
+}
+
+.lore-card {
+    padding: 32px;
+
+    background: #0d0d0d;
+
+    border: 1px solid #1b1b1b;
+
+    border-radius: 12px;
+}
+
+.lore-number {
+    color: #2587ff;
+
+    font-size: 9px;
+    font-weight: bold;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 18px;
+}
+
+.lore-card h3 {
+    font-size: 22px;
+
+    margin-bottom: 13px;
+}
+
+.lore-card p {
+    color: #777;
+
+    line-height: 1.7;
+
+    font-size: 13px;
+}
+
+
+/* ================================
+   STATS
+================================ */
+
+.stats {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 16px;
+}
+
+.stat {
+    padding: 40px 20px;
+
+    text-align: center;
+
+    background: #0b0b0b;
+
+    border: 1px solid #1b1b1b;
+
+    border-radius: 12px;
+}
+
+.stat-number {
+    color: #2587ff;
+
+    font-size: 52px;
+
+    font-weight: bold;
+
+    margin-bottom: 8px;
+}
+
+.stat-label {
+    color: #666;
+
+    font-size: 10px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+}
+
+
+/* ================================
+   SECRET
+================================ */
+
+.secret-area {
+    padding: 100px 20px;
+
+    text-align: center;
+
+    background: #050505;
+}
+
+.secret-button {
+    padding: 14px 24px;
+
+    background: transparent;
+
+    color: #2587ff;
+
+    border: 1px solid #2587ff;
+
+    border-radius: 5px;
+
+    font-size: 11px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.25s;
+}
+
+.secret-button:hover {
+    background: #2587ff;
+    color: white;
+}
+
+#secret-message {
+    display: none;
+
+    color: #777;
+
+    margin-top: 25px;
+
+    font-size: 14px;
+}
+
+
+/* ================================
+   FOOTER
+================================ */
+
+footer {
+    padding: 75px 20px;
+
+    text-align: center;
+
+    border-top: 1px solid #181818;
+}
+
+.footer-logo {
+    width: 95px;
+
+    margin-bottom: 20px;
+}
+
+footer p {
+    color: #555;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+}
+
+
+/* ================================
+   MOBILE
+================================ */
+
+@media(max-width: 900px) {
+
+    .hero {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+    .hero-logo {
+        width: 280px;
+
+        align-self: center;
+    }
+
+    .members-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .skill-list {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .stats {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+
+@media(max-width: 600px) {
+
+    nav {
+        padding: 0 5%;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .hero {
+        padding-left: 6%;
+        padding-right: 6%;
+    }
+
+    section:not(.hero) {
+        padding-left: 6%;
+        padding-right: 6%;
+    }
+
+    .members-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .skill-list {
+        grid-template-columns: 1fr;
+    }
+
+    .lore-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stats {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .photo-wrapper {
+        height: 420px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================================
+     NAVIGATION
+========================================= -->
+
+<nav>
+
+    <img
+        src="logo.png"
+        class="nav-logo"
+        alt="KAASSS"
+    >
+
+    <div class="nav-links">
+
+        <a href="#home">HOME</a>
+
+        <a href="#members">MEMBERS</a>
+
+        <a href="#skills">SKILLS</a>
+
+        <a href="#lore">LORE</a>
+
+        <a href="#stats">STATS</a>
+
+    </div>
+
+</nav>
+
+
+<!-- =========================================
+     HERO
+========================================= -->
+
+<section
+    id="home"
+    class="hero"
+>
+
+    <div class="hero-content">
+
+        <p class="hero-small">
+            THE OFFICIAL KAASSS DATABASE
+        </p>
+
+        <h1>
+            SIX DUDES.<br>
+            <span>ONE BRAIN.</span>
+        </h1>
+
+        <p class="hero-description">
+
+            Welcome to the official headquarters
+            of KAASSS — six people, questionable
+            decisions, and approximately one
+            functioning brain cell.
+
+        </p>
+
+        <div class="hero-buttons">
+
+            <a
+                href="#members"
+                class="button primary"
+            >
+                MEET THE SQUAD →
+            </a>
+
+            <a
+                href="#stats"
+                class="button secondary"
+            >
+                VIEW STATS
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <img
+        src="logo.png"
+        class="hero-logo"
+        alt="KAASSS Logo"
+    >
+
+</section>
+
+
+
+<!-- =========================================
+     MEMBERS
+========================================= -->
+
+<section
+    id="members"
+    class="members"
+>
+
+    <p class="section-label">
+        THE SQUAD
+    </p>
+
+    <h2 class="section-title">
+        Meet KAASSS.
+    </h2>
+
+
+    <div class="members-grid">
+
+
+        <!-- =================================
+             KAHAAN
+        ================================== -->
+
+        <div class="member-card">
+
+            <div class="photo-wrapper">
+
+                <img
+                    src="kahaan.jpg"
+                    alt="Kahaan"
+                    style="object-position: left center;"
+                >
+
+            </div>
+
+
+            <div class="member-info">
+
+                <p class="member-letter">
+                    K — 01
+                </p>
+
+                <h3 class="member-name">
+                    KAHAAN
+                </h3>
+
+                <p class="member-title">
+                    Pimple Monster
+                </p>
+
+                <div class="skills">
+
+                    <span class="skill">
+                        ART
+                    </span>
+
+                    <span class="skill">
+                        NERD
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================
+             AARAV
+        ================================== -->
+
+        <div class="member-card">
+
+            <div class="photo-wrapper">
+
+                <img
+                    id="aaravPhoto"
+                    src="aarav1.jpg"
+                    alt="Aarav"
+                >
+
+                <button
+                    class="photo-arrow prev"
+                    onclick="changeAarav(-1)"
+                    aria-label="Previous Aarav photo"
+                >
+                    ‹
+                </button>
+
+                <button
+                    class="photo-arrow next"
+                    onclick="changeAarav(1)"
+                    aria-label="Next Aarav photo"
+                >
+                    ›
+                </button>
+
+            </div>
+
+
+            <div class="member-info">
+
+                <p class="member-letter">
+                    A — 02
+                </p>
+
+                <h3 class="member-name">
+                    AARAV
+                </h3>
+
+                <p class="member-title">
+                    Malnutrition Giraffe
+                </p>
+
+                <div class="skills">
+
+                    <span class="skill">
+                        ATHLETICS
+                    </span>
+
+                    <span class="skill">
+                        CALISTHENICS
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================
+             ANISH
+        ================================== -->
+
+        <div class="member-card">
+
+            <div class="photo-wrapper">
+
+                <img
+                    src="anish.jpg"
+                    alt="Anish"
+                >
+
+            </div>
+
+
+            <div class="member-info">
+
+                <p class="member-letter">
+                    A — 03
+                </p>
+
+                <h3 class="member-name">
+                    ANISH
+                </h3>
+
+                <p class="member-title">
+                    Flirtist
+                </p>
+
+                <div class="skills">
+
+                    <span class="skill">
+                        FLIRTING
+                    </span>
+
+                    <span class="skill">
+                        DESIGNING
+                    </span>
+
+                    <span class="skill">
+                        GUITAR
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================
+             SUDHANVA
+        ================================== -->
+
+        <div class="member-card">
+
+            <div class="photo-wrapper">
+
+                <img
+                    src="sudhanva.jpg"
+                    alt="Sudhanva"
+                    style="object-position: 58% center;"
+                >
+
+            </div>
+
+
+            <div class="member-info">
+
+                <p class="member-letter">
+                    S — 04
+                </p>
+
+                <h3 class="member-name">
+                    SUDHANVA
+                </h3>
+
+                <p class="member-title">
+                    Car Addict
+                </p>
+
+                <div class="skills">
+
+                    <span class="skill">
+                        ART
+                    </span>
+
+                    <span class="skill">
+                        CARS
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================
+             SAI KRISHAV
+        ================================== -->
+
+        <div class="member-card">
+
+            <div class="photo-wrapper">
+
+                <img
+                    src="sai.jpg"
+                    alt="Sai Krishav"
+                >
+
+            </div>
+
+
+            <div class="member-info">
+
+                <p class="member-letter">
+                    S — 05
+                </p>
+
+                <h3 class="member-name">
+                    SAI KRISHAV
+                </h3>
+
+                <p class="member-title">
+                    "TT Player"
+                </p>
+
+                <div class="skills">
+
+                    <span class="skill">
+                        TABLE TENNIS
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================
+             SUHAS
+        ================================== -->
+
+        <div class="member-card">
+
+            <div class="photo-wrapper">
+
+                <img
+                    src="suhas.jpg"
+                    alt="Suhas"
+                >
+
+            </div>
+
+
+            <div class="member-info">
+
+                <p class="member-letter">
+                    S — 06
+                </p>
+
+                <h3 class="member-name">
+                    SUHAS
+                </h3>
+
+                <p class="member-title">
+                    Valorant Player
+                </p>
+
+                <div class="skills">
+
+                    <span class="skill">
+                        VALORANT
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================
+     SKILLS
+========================================= -->
+
+<section
+    id="skills"
+    class="skills-section"
+>
+
+    <p class="section-label">
+        KAASSS ABILITIES
+    </p>
+
+    <h2 class="section-title">
+        The Skill Tree.
+    </h2>
+
+
+    <div class="skill-list">
+
+
+        <div class="skill-box">
+
+            <h3>
+                🎨 Art
+            </h3>
+
+            <p>
+                Kahaan & Sudhanva
+            </p>
+
+        </div>
+
+
+        <div class="skill-box">
+
+            <h3>
+                🤓 Nerd
+            </h3>
+
+            <p>
+                Kahaan
+            </p>
+
+        </div>
+
+
+        <div class="skill-box">
+
+            <h3>
+                🏃 Athletics
+            </h3>
+
+            <p>
+                Aarav
+            </p>
+
+        </div>
+
+
+        <div class="skill-box">
+
+            <h3>
+                💪 Calisthenics
+            </h3>
+
+            <p>
+                Aarav
+            </p>
+
+        </div>
+
+
+        <div class="skill-box">
+
+            <h3>
+                🎨 Designing
+            </h3>
+
+            <p>
+                Anish
+            </p>
+
+        </div>
+
+
+        <div class="skill-box">
+
+            <h3>
+                🎸 Guitar
+            </h3>
+
+            <p>
+                Anish
+            </p>
+
+        </div>
+
+
+        <div class="skill-box">
+
+            <h3>
+                🏓 Table Tennis
+            </h3>
+
+            <p>
+                Sai Krishav
+            </p>
+
+        </div>
+
+
+        <div class="skill-box">
+
+            <h3>
+                🎮 Valorant
+            </h3>
+
+            <p>
+                Suhas
+            </p>
+
+        </div>
+
+
+        <div class="skill-box">
+
+            <h3>
+                🏎️ Cars
+            </h3>
+
+            <p>
+                Sudhanva
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================
+     LORE
+========================================= -->
+
+<section
+    id="lore"
+    class="lore"
+>
+
+    <p class="section-label">
+        CLASSIFIED FILES
+    </p>
+
+    <h2 class="section-title">
+        KAASSS Lore.
+    </h2>
+
+
+    <div class="lore-grid">
+
+
+        <div class="lore-card">
+
+            <p class="lore-number">
+                FILE 001
+            </p>
+
+            <h3>
+                THE SIX
+            </h3>
+
+            <p>
+                Kahaan. Aarav. Anish.
+                Sudhanva. Sai Krishav.
+                Suhas.
+
+                Six dudes.
+                One brain cell.
+            </p>
+
+        </div>
+
+
+        <div class="lore-card">
+
+            <p class="lore-number">
+                FILE 002
+            </p>
+
+            <h3>
+                THE BRAIN CELL
+            </h3>
+
+            <p>
+                Its current location is unknown.
+                Last seen being passed around
+                during an argument.
+            </p>
+
+        </div>
+
+
+        <div class="lore-card">
+
+            <p class="lore-number">
+                FILE 003
+            </p>
+
+            <h3>
+                THE SPECIALISTS
+            </h3>
+
+            <p>
+                Art. Cars. Athletics.
+                Guitar. Table Tennis.
+                Valorant.
+
+                KAASSS somehow has
+                every skill except
+                common sense.
+            </p>
+
+        </div>
+
+
+        <div class="lore-card">
+
+            <p class="lore-number">
+                FILE 004
+            </p>
+
+            <h3>
+                STATUS
+            </h3>
+
+            <p>
+                Organisation remains active.
+                Productivity remains questionable.
+                Brain cell remains shared.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================
+     STATS
+========================================= -->
+
+<section id="stats">
+
+    <p class="section-label">
+        OFFICIAL KAASSS STATISTICS
+    </p>
+
+    <h2 class="section-title">
+        Completely Legitimate.
+    </h2>
+
+
+    <div class="stats">
+
+
+        <div class="stat">
+
+            <div class="stat-number">
+                6
+            </div>
+
+            <p class="stat-label">
+                DUDES
+            </p>
+
+        </div>
+
+
+        <div class="stat">
+
+            <div class="stat-number">
+                1
+            </div>
+
+            <p class="stat-label">
+                BRAIN CELL
+            </p>
+
+        </div>
+
+
+        <div class="stat">
+
+            <div class="stat-number">
+                9
+            </div>
+
+            <p class="stat-label">
+                SKILLS
+            </p>
+
+        </div>
+
+
+        <div class="stat">
+
+            <div class="stat-number">
+                ∞
+            </div>
+
+            <p class="stat-label">
+                CHAOS
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================
+     SECRET
+========================================= -->
+
+<div class="secret-area">
+
+    <button
+        class="secret-button"
+        onclick="revealSecret()"
+    >
+        DO NOT CLICK
+    </button>
+
+    <p id="secret-message">
+
+        You clicked it.
+
+        Congratulations.
+
+        You have discovered absolutely nothing.
+
+        💀
+
+    </p>
+
+</div>
+
+
+
+<!-- =========================================
+     FOOTER
+========================================= -->
+
+<footer>
+
+    <img
+        src="logo.png"
+        class="footer-logo"
+        alt="KAASSS"
+    >
+
+    <p>
+        6 DUDES • 1 BRAIN CELL
+    </p>
+
+</footer>
+
+
+
+<script>
+
+/* =========================================
+   AARAV PHOTO SYSTEM
+========================================= */
+
+const aaravPhotos = [
+
+    "aarav1.jpg",
+
+    "aarav2.jpg"
+
+];
+
+let aaravIndex = 0;
+
+
+function changeAarav(direction) {
+
+    aaravIndex += direction;
+
+
+    if (aaravIndex < 0) {
+
+        aaravIndex =
+            aaravPhotos.length - 1;
+
+    }
+
+
+    if (
+        aaravIndex >=
+        aaravPhotos.length
+    ) {
+
+        aaravIndex = 0;
+
+    }
+
+
+    document
+        .getElementById("aaravPhoto")
+        .src =
+        aaravPhotos[aaravIndex];
+
+}
+
+
+/* =========================================
+   SECRET BUTTON
+========================================= */
+
+function revealSecret() {
+
+    const message =
+        document.getElementById(
+            "secret-message"
+        );
+
+
+    if (
+        message.style.display ===
+        "none" ||
+        message.style.display === ""
+    ) {
+
+        message.style.display =
+            "block";
+
+    }
+
+    else {
+
+        message.style.display =
+            "none";
+
+    }
+
+}
+
+</script>
+
+
+</body>
+</html>
